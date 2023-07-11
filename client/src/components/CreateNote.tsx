@@ -85,7 +85,7 @@ const CreateNote = () => {
         >
           Text
         </label>
-        <Textarea id="text" placeholder="title" {...register("text")} />
+        <Textarea id="text" placeholder="text" {...register("text")} />
         {errors.text && (
           <p className="mt-1 text-sm font-semibold text-red-600">
             {errors.text.message}
