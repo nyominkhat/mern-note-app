@@ -14,8 +14,8 @@ const UserDropdown = ({ name }: { name: string | null }) => {
 
   const logout = () => {
     localStorage.clear();
-    navigate(0);
     navigate("/");
+    navigate(0);
   };
 
   return (
@@ -27,7 +27,9 @@ const UserDropdown = ({ name }: { name: string | null }) => {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="cursor-pointer">
-          <Link to={`/${name?.toLowerCase().replace(" ", "-")}`}>Notes</Link>
+          <Link to={`/user/${name?.toLowerCase().replace(" ", "-")}`}>
+            Notes
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={logout} className="cursor-pointer">
           Logout

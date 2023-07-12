@@ -8,13 +8,11 @@ import NotePage from "./pages/NotePage";
 import Home from "./pages/Home";
 
 import getToken from "./helpers/getToken";
-import getUser from "./helpers/getUser";
 
 import useLoginModal from "./lib/modals/useLoginModal";
 
 function App() {
   const token = getToken();
-  const name = getUser();
 
   const navigate = useNavigate();
 
@@ -39,10 +37,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path={`/${name?.toLowerCase().replace(" ", "-")}`}
-          element={token && <NotePage />}
-        />
+        <Route path={`/user/:slug`} element={token && <NotePage />} />
       </Routes>
     </Layout>
   );
