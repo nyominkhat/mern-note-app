@@ -105,7 +105,7 @@ const Note = ({ note, refetch }: { note: NoteProps; refetch: () => void }) => {
   return (
     <Card
       onClick={handleClick}
-      className="lg:max-w-sm min-w-full relative h-60 overflow-hidden lg:min-w-[18rem] bg-[#E3E3E3]/20 text-[#161113]"
+      className="lg:max-w-sm min-w-full relative h-60 overflow-hidden cursor-pointer lg:min-w-[18rem] bg-[#E3E3E3]/20 text-[#161113]"
     >
       <CardHeader>
         <CardTitle className="text-lg tet">

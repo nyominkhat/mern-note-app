@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   DropdownMenu,
@@ -26,6 +26,9 @@ const UserDropdown = ({ name }: { name: string | null }) => {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link to={`/${name?.toLowerCase().replace(" ", "-")}`}>Notes</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem onClick={logout} className="cursor-pointer">
           Logout
         </DropdownMenuItem>

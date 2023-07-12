@@ -53,7 +53,7 @@ const LoginModal = () => {
       localStorage.setItem("username", data.username);
       loginClose();
 
-      navigate("/");
+      navigate(`/${data?.username.toLowerCase().replace(" ", "-")}`);
     }
 
     if (isError) {

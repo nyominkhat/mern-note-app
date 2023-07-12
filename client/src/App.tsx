@@ -4,13 +4,17 @@ import jwtDecode, { JwtPayload } from "jwt-decode";
 
 import Layout from "./layouts/Layout";
 
+import NotePage from "./pages/NotePage";
 import Home from "./pages/Home";
 
 import getToken from "./helpers/getToken";
+import getUser from "./helpers/getUser";
+
 import useLoginModal from "./lib/modals/useLoginModal";
 
 function App() {
   const token = getToken();
+  const name = getUser();
 
   const navigate = useNavigate();
 
@@ -24,7 +28,7 @@ function App() {
         console.log("time to logout");
 
         localStorage.clear();
-        
+
         navigate("/");
         loginOpen();
       }
@@ -34,7 +38,11 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={token && <Home />} />
+        <Route path="/" element={<Home />} />
+        <Route
+          path={`/${name?.toLowerCase().replace(" ", "-")}`}
+          element={token && <NotePage />}
+        />
       </Routes>
     </Layout>
   );

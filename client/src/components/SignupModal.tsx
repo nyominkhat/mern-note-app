@@ -61,8 +61,8 @@ const SignupModal = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("username", data.username);
       onClose();
-      
-      navigate("/");
+
+      navigate(`/${data?.username.toLowerCase().replace(" ", "-")}`);
     }
 
     if (isError) {

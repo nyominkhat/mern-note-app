@@ -1,12 +1,18 @@
-import CreateNote from "../components/CreateNote";
-import Notes from "../components/Notes";
+import { Button } from "../components/ui/button";
+import useSignupModal from "../lib/modals/useSignupModal";
 
 const Home = () => {
-  return (
-    <div className="container flex flex-col-reverse items-start justify-between w-full h-full gap-4 mx-auto overflow-hidden overflow-y-scroll sm:flex-row">
-      <Notes />
+  const { onOpen: signupOpen } = useSignupModal();
 
-      <CreateNote />
+  return (
+    <div className="container flex flex-col items-center justify-center w-full h-full gap-10 mx-auto">
+      <h1 className="text-2xl font-bold text-center lg:text-6xl md:text-4xl">
+        The simplest way to keep <br /> notes
+      </h1>
+
+      <Button className="font-bold" onClick={signupOpen}>
+        Sign up now
+      </Button>
     </div>
   );
 };
