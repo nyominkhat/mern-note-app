@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 
@@ -9,6 +10,10 @@ const Home = () => {
   const { onOpen: signupOpen } = useSignupModal();
 
   const name = getUser();
+
+  useEffect(() => {
+    document.title = "Notas || The best way to keep notes";
+  }, []);
 
   const handleOnClick = () => {
     if (name) {
