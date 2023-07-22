@@ -32,7 +32,7 @@ const Navbar = () => {
       >
         <img
           className="object-cover w-full h-full"
-          src="./images/logo.png"
+          src="../../public/images/logo.png"
           alt=""
         />
       </figure>
