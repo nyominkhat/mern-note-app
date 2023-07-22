@@ -10,6 +10,8 @@ import getUser from "../helpers/getUser";
 import useLoginModal from "../lib/modals/useLoginModal";
 import useSignupModal from "../lib/modals/useSignupModal";
 
+import logo from "../../public/images/logo.png";
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -30,11 +32,7 @@ const Navbar = () => {
         onClick={handleClick}
         className="w-24 h-10 transition rounded-sm shadow cursor-pointer sm:h-14 sm:w-36 hover:shadow-lg"
       >
-        <img
-          className="object-cover w-full h-full"
-          src="../../public/images/logo.png"
-          alt=""
-        />
+        <img className="object-cover w-full h-full" src={logo} alt="" />
       </figure>
 
       {isAuthorized ? (
