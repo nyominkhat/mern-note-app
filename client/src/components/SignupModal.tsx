@@ -12,6 +12,7 @@ import { Input } from "./ui/input";
 
 import useUserSignup from "../hooks/auths/useUserSignup";
 import useSignupModal from "../lib/modals/useSignupModal";
+import useLoginModal from "../lib/modals/useLoginModal";
 
 const getCharacterValidationError = (str: string) => {
   return `Your password must have at least 1 ${str}!`;
@@ -48,7 +49,13 @@ const SignupModal = () => {
   const { mutate, isSuccess, isError, error, isLoading, data } =
     useUserSignup();
 
-  const { isOpen, onClose } = useSignupModal();
+  const { isOpen, onClose: signupClose } = useSignupModal();
+  const { onOpen: loginOpen } = useLoginModal();
+
+  const handleClick = () => {
+    signupClose();
+    loginOpen();
+  };
 
   const onSubmit = handleSubmit((data) => {
     mutate(data);
@@ -60,7 +67,7 @@ const SignupModal = () => {
       toast.success("Welcome to the Notas!");
       localStorage.setItem("token", data.token);
       localStorage.setItem("username", data.username);
-      onClose();
+      signupClose();
 
       navigate(`/user/${data?.username.toLowerCase().replace(" ", "-")}`);
     }
@@ -71,7 +78,7 @@ const SignupModal = () => {
   }, [isSuccess, isError]);
 
   return (
-    <Dialog onOpenChange={onClose} open={isOpen}>
+    <Dialog onOpenChange={signupClose} open={isOpen}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Sign up</DialogTitle>
@@ -171,6 +178,13 @@ const SignupModal = () => {
             <span>{isLoading ? "Signing up" : "Sign up"}</span>
           </Button>
         </form>
+
+        <span
+          onClick={handleClick}
+          className="text-sm font-semibold underline transition cursor-pointer text-slate-600 w-fit hover:text-slate-400"
+        >
+          Do you have an account!
+        </span>
       </DialogContent>
     </Dialog>
   );
