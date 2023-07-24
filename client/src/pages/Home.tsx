@@ -17,7 +17,7 @@ const Home = () => {
 
   const handleOnClick = () => {
     if (name) {
-      navigate(`/user/${name?.toLowerCase().replace(" ", "-")}`);
+      navigate(`/user/${name?.toLowerCase().replace(/\s/g, "-")}`);
 
       return;
     }
@@ -32,7 +32,7 @@ const Home = () => {
       </h1>
 
       <Button className="font-bold" onClick={handleOnClick}>
-        Sign up now
+        Let's notes
       </Button>
     </div>
   );

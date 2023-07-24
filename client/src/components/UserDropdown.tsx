@@ -27,7 +27,7 @@ const UserDropdown = ({ name }: { name: string | null }) => {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="cursor-pointer">
-          <Link to={`/user/${name?.toLowerCase().replace(" ", "-")}`}>
+          <Link to={`/user/${name?.toLowerCase().replace(/\s/g, "-")}`}>
             Notes
           </Link>
         </DropdownMenuItem>
